@@ -5,6 +5,24 @@ import { Step2 } from "./Step2";
 import { Step3 } from "./Step3";
 import { Result } from "./Result";
 import { Header } from "./components/Header";
+import { FirebaseAppProvider,preloadFirestore } from "reactfire";
+import { firebaseConfig } from './firebaseconfig';
+import firebase from 'firebase/app';
+
+
+
+// const app = firebase.initializeApp(firebaseConfig);
+
+// const db = 
+
+// const preloadSDKs = firebase => {
+//   return Promise.all([
+//     preloadFirestore(firebase, firestore => {
+//       return firestore().settings({host: 'localhost:8080', ssl:false})
+//     })
+//   ]);
+// };
+
 
 function App() {
   return (

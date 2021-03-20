@@ -38,7 +38,7 @@ export const Step1 = () => {
   return (
     <MainContainer>
       <Typography component="h2" variant="h5">
-        🦄 Step 1
+      Please Provide Your Name
       </Typography>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input

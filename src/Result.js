@@ -19,6 +19,13 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InsertDriveFile from "@material-ui/icons/InsertDriveFile";
+import { db } from './localfirebaseconfig';
+
+/* Firebase Imports */
+import 'firebase/firestore';
+import { useFirestoreDocData, useFirestore } from 'reactfire';
+
+
 
 const useStyles = makeStyles({
   root: {
@@ -33,6 +40,7 @@ export const Result = () => {
   const [success, setSuccess] = useState(false);
   const styles = useStyles();
   const { data } = useData();
+
 
   const entries = Object.entries(data).filter((entry) => entry[0] !== "files");
   const { files } = data;
@@ -49,20 +57,39 @@ export const Result = () => {
       formData.append(entry[0], entry[1]);
     });
 
-    const res = await fetch("http://localhost:4000/", {
-      method: "POST",
-      body: formData,
-    });
 
-    if (res.status === 200) {
-      Swal.fire("Great job!", "You've passed the challenge!", "success");
-      setSuccess(true);
+    let formEntries = 0;
+
+    for (let pair of formData.entries()){
+      console.log(pair)
+    
     }
+
+    // for (let i = 0; i < formEntries; i++){
+    //   for(let data of formData.entries()){
+    //     let test = {
+    //       firstName: data[0] == 'firstName',
+    //       lastName: data[0] == 'lastName',
+    //     }
+    //     console.log(data)
+    //   }
+    // }
+
+    const form_stuff = new Map(formData.entries())
+
+    
+
+    // db.collection('test').doc().set({testing:'THis is a test'})
+
+    // if (true) {
+    //   Swal.fire("Great job!", "You've passed the challenge!", "success");
+    //   setSuccess(true);
+    // }
   };
 
-  if (success) {
-    return <Confetti />;
-  }
+  // if (true) {
+  //   return <Confetti />;
+  // }
 
   return (
     <>
